@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<groupId>com.liferay.test</groupId>
+		<artifactId>previewtest</artifactId>
+		<version>2.0-m2-SNAPSHOT</version>
+	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.liferay.test</groupId>
 	<artifactId>attribute-test</artifactId>
 	<packaging>war</packaging>
 	<name>attribute-test Portlet</name>
-	<version>2.0-m2-SNAPSHOT</version>
 	<properties>
 	    <liferay.version>6.2.0-ga1</liferay.version>
 	    <liferay.maven.plugin.version>6.2.0-ga1</liferay.maven.plugin.version>
@@ -17,42 +20,6 @@
 		<liferay.app.server.deploy.dir>${liferay.app.server.dir}/webapps</liferay.app.server.deploy.dir>
 		<liferay.app.server.portal.dir>${liferay.app.server.dir}/webapps/ROOT</liferay.app.server.portal.dir>
 	</properties>
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-				<resources>
-					<resource>
-						<directory>src/main/resources</directory>
-						<excludes>
-							<exclude>rebel.xml</exclude>
-						</excludes>
-					</resource>
-				</resources>
-			</build>
-		</profile>
-	</profiles>
-	<scm>
-		<connection>scm:git:https://github.com/ngriffin7a/previewtest</connection>
-		<developerConnection>scm:git:https://github.com/ngriffin7a/previewtest</developerConnection>
-		<url>scm:git:https://github.com/ngriffin7a/previewtest</url>
-		<tag>HEAD</tag>
-	</scm>
 	<build>
 		<plugins>
 			<plugin>
@@ -85,46 +52,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.4</version>
-				</plugin>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.liferay.maven.plugins
-										</groupId>
-										<artifactId>
-											liferay-maven-plugin
-										</artifactId>
-										<versionRange>
-											[${liferay.maven.plugin.version},)
-										</versionRange>
-										<goals>
-											<goal>build-css</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 	<dependencies>
 		<dependency>
@@ -171,10 +98,4 @@
 		</dependency>
 	</dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>liferay-previews</id>
-			<url>https://repository.liferay.com/nexus/content/repositories/liferay-previews</url>
-		</repository>
-	</distributionManagement>
 </project>
