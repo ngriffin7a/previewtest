@@ -46,7 +46,7 @@
 				</resources>
 			</build>
 		</profile>
-	</profile>
+	</profiles>
 	<scm>
 		<connection>scm:git:https://github.com/ngriffin7a/previewtest</connection>
 		<developerConnection>scm:git:https://github.com/ngriffin7a/previewtest</developerConnection>
